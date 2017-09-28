@@ -1,0 +1,18 @@
+<h3>This is urls/index</h3>
+
+<%= link_to 'Click to shorten url', new_url_path %>
+
+
+<table>
+	<tr>
+		<th>Long URL</th>
+		<th>Shortened URL</th>
+	</tr>
+
+	<% @urls.each do |url| %>
+		<tr>
+			<td><a href = <%= url_path(url) %> ><%= url.long_url%></a></td>
+			<td><%= url.short_url %></td>
+		</tr>
+	<% end %>
+</table>

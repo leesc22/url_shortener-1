@@ -1,5 +1,6 @@
 class UrlsController < ApplicationController
 	def index
+		@urls = Url.all
 	end
 
 	def new
@@ -10,11 +11,15 @@ class UrlsController < ApplicationController
 		@url = Url.new(url_params)
 		@url.shorten_url
 		if @url.save
-			redirect_to urls_path
+			render 'new'
 		else
 			@errors = @url.errors.messages
 			render 'new'
 		end
+	end
+
+	def show
+		@url = Url.find(params[:id])
 	end
 
 	private
